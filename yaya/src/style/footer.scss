@@ -1,0 +1,24 @@
+@function vw($px){
+    @return($px/375)*100vw;
+}
+@function vh($px){
+    @return($px/667)*100vh;
+}
+.footer{
+    width: vw(375);
+    // height: 100px;
+    // flex: 2;
+    // height: 100%;
+    // height: 20%;
+    background: red;
+    .footer-count-1{
+        .root{
+            // width: 100%;
+            // position: absolute;
+            // bottom: 0;
+            .MuiBottomNavigationAction-root{
+                min-width:vw(70);
+            }
+        }
+    }
+}

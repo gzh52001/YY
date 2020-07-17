@@ -1,0 +1,15 @@
+@function vw($px){
+    @return($px/375)*100vw;
+}
+@function vh($px){
+    @return($px/667)*100vh;
+}
+
+.home{
+    width: vw(375);
+    height: 100%;
+    overflow: auto;
+    .home-count-1{
+        // height: 2000px;
+    }
+}

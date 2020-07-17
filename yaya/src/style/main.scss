@@ -1,0 +1,15 @@
+@function vw($px){
+    @return($px/375)*100vw;
+}
+@function vh($px){
+    @return($px/667)*100vh;
+}
+.main{
+    width: vw(375);
+    height: vh(613);
+    // height: vw();
+    background: red;
+    .MuiButton-containedPrimary{
+    // min-width: vw(1);
+}
+}
