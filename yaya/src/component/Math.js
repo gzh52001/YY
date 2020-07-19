@@ -9,6 +9,8 @@ import Shopp from './shopp'
 import SortList from '../view/sort-list'
 import FuzzyQuery from '../view/FuzzyQuery'
 import '../style/main.scss'
+import Login from './login'
+import Reg from './reg'
 class Math extends Component{
     render(){
         return(
@@ -21,6 +23,8 @@ class Math extends Component{
            <Route  path="/mine" component={Mine}/>{/* 我的 */}
            <Route  path="/sort-list/:id" component={SortList}/>分类-商品列表
            <Route  path="/FuzzyQuery" component={FuzzyQuery}/>{/* 模糊搜索 */}
+           <Route  path="/login" component={Login}/>
+           <Route  path="/reg" component={Reg}/>
            <Route  path="/notfount" component={()=>{
                return <div>404</div>
            }}/>

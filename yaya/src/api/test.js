@@ -26,7 +26,13 @@ export default {
             method: 'get',
             url:"/add-api/products/search/v1?coll="+id+"&keyword=&productId=&page=1&inStock=0&searchType=1&isPID=1&from=&hspid=&brandId="
         });
-    }
-
+    },
+getmine() {
+        return axios({ //返回一个promise对象
+            method: 'get',
+            url:'/add-api/member/index/v3?v=0.32552813180810625&from='
+        });
+    },
 
 }
+    
