@@ -7,6 +7,8 @@ import Message from './message'
 import Mine from './mine'
 import Shopp from './shopp'
 import '../style/main.scss'
+import Login from './login'
+import Reg from './reg'
 class Math extends Component{
     render(){
         return(
@@ -16,6 +18,8 @@ class Math extends Component{
             <Route  path="/message" component={Message}/>
            <Route  path="/shopp" component={Shopp}/>
            <Route  path="/mine" component={Mine}/>
+           <Route  path="/login" component={Login}/>
+           <Route  path="/reg" component={Reg}/>
           </div>
         )
     }
