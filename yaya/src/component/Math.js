@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 // import Button from '@material-ui/core/Button';
-import {Route} from 'react-router-dom'
+import {Route,Switch,Redirect} from 'react-router-dom'
 import Home from './home'
 import Sort from './sort'
 import Message from './message'
@@ -13,6 +13,7 @@ class Math extends Component{
     render(){
         return(
             <div className='main'> 
+            <Switch>
            <Route  path="/home" component={Home}/>
            <Route  path="/sort" component={Sort}/>
             <Route  path="/message" component={Message}/>
@@ -20,6 +21,13 @@ class Math extends Component{
            <Route  path="/mine" component={Mine}/>
            <Route  path="/login" component={Login}/>
            <Route  path="/reg" component={Reg}/>
+           <Route  path="/notfount" component={()=>{
+               return <div>404</div>
+           }}/>
+
+            <Redirect from='/' to='/home' exact/>
+            <Redirect to='/notfount'/>
+           </Switch>
           </div>
         )
     }

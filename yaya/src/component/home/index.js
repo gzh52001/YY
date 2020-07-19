@@ -1,7 +1,9 @@
 import React,{Component} from 'react'
 import Button from '@material-ui/core/Button';
 import '../../style/home.scss'
+// import appjson from '../../api/test'
 class Home extends Component{
+
     render(){
         return(
             <div className='home'>

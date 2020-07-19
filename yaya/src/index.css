@@ -1,4 +1,8 @@
+ul li {
+    list-style: none;
+}
 body {
+
 display: flex;
 box-sizing:border-box ;
 height: 100%;
