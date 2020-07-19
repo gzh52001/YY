@@ -1,8 +1,10 @@
 import React,{Component} from 'react'
-import { Input ,Menu} from 'antd';
+import { Input ,Menu,Form} from 'antd';
 import { SearchOutlined ,LeftOutlined,UnorderedListOutlined} from '@ant-design/icons';
 import appjson from '../../api/test'
 import '../../style/sort.scss'
+
+const FormItem = Form.Item;
 class Sort extends Component{
     state={
         //接口数据
@@ -22,7 +24,7 @@ class Sort extends Component{
             //分类的右边数据 加个[]便于循环渲染
             listRight:[a.data.data[0]]
           }) 
-         console.log(this.state.list[0]);
+         console.log(this.state.list);
         }catch(err){
             console.log(err);
         }
@@ -42,19 +44,26 @@ class Sort extends Component{
             //把list中的下标[key-1]放入listRight
             listRight:[list[e.key-1]]
         })
+       
     }
     coll=(e)=>{
         e=e[0]
         console.log(e);
+         this.props.history.push('/sort-list/'+e)
+    }
+    sousuo=()=>{
+        this.props.history.push('/FuzzyQuery')
     }
     render(){
         const {listRight}=this.state
+        // const { getFieldDecorator } = this.props.form;
+        console.log(this.props);
         return(
     <div className='sort'> 
         <div className='sort-count-1'>
             <div onClick={this.chage}><LeftOutlined className='sort-count-1-1'/></div>
-             <Input size="large" placeholder="拼刺刀" prefix={<SearchOutlined />} />
-             <UnorderedListOutlined className='sort-count-1-2'/>
+            <div onClick={this.sousuo}><Input size="large"  prefix={<SearchOutlined/>} /></div>
+            <UnorderedListOutlined className='sort-count-1-2'/>
              </div>
         <div className='sort-count-2'>
              <Menu className='sort-count-2-left'
