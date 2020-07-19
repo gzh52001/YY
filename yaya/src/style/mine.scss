@@ -17,8 +17,8 @@
 .mynei{
     width: vw(375);
     // height: 100%;
-    height: vh(900);
-    background: rgb(245, 245, 245);
+    // height: 100%;
+    // background: rgb(245, 245, 245);
     // z-index: 1;
 
 }
@@ -97,13 +97,13 @@
     display: block;
     width: vw(80);
 }
-
 .dindan{
     width: vw(348);
-    height: vh(113.8);
+    // height: 100%;
     background: #fff;
-    // margin-top: 10px;
-    margin: 10px auto 0;
+    margin-top: 10px;
+    margin-left: 15px;
+    float: left;
     border-radius: 5px;
 }
 .dindan-tou{
@@ -116,7 +116,8 @@
 }
 .dindan .dindan-tou .s-l{
     // position: absolute;
-    margin-left: vw(220);
+    float: right;
+    margin-right: vw(20);
     font-size: 12px;
 }
 .tubia{
@@ -127,37 +128,13 @@
     text-align: center;
     margin-top: vh(15);
 }
-.tubie{
-    width: vw(80);
-    height: vh(60);
-    float: left;
-    margin-left: vw(5);
-    text-align: center;
-    margin-top: vh(10);
-}
 .tubia .tu{
-    font-size: 24px;
-}
-.tubie .tu{
-    font-size: 24px;
+    width: vw(20);
+    height: vh(20);
 }
 .tubia span{
     display: block;
     margin-top: vh(8);
     font-size: 13px;
     color: rgb(112, 112, 112);
-}
-.tubie span{
-    display: block;
-    margin-top: vh(4);
-    font-size: 13px;
-    color: rgb(112, 112, 112);
-}
-.qita{
-    width: vw(348);
-    height: vh(185.6);
-    background: #fff;
-    // margin-top: 10px;
-    margin: 15px auto 0;
-    border-radius: 5px;
 }

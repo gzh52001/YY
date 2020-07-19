@@ -1,14 +1,26 @@
 import React,{Component} from 'react'
 // import Button from '@material-ui/core/Button';
 // import '../style/main.scss'
+import apijson from '../../api/test'
 import '../../style/mine.scss'
-import {
-    CreditCardOutlined,
-    GiftOutlined,
-    CommentOutlined,
-    FileDoneOutlined
-  } from '@ant-design/icons';
 class Mine extends Component{
+    state={
+        list:[]
+    }
+    async componentWillMount(){
+        try{
+            let mn = await apijson.getmine()
+            console.log(mn.data.data.menu);
+            this.setState({
+                list:mn.data.data.menu.filter((item,idx)=>(
+                    item.type===1
+                    ))
+            })
+            console.log(this.state.list[0]);
+        }catch(a){
+            console.log(a);
+        }
+    }
     chage=()=>{
             // console.log(this.props);
             this.props.history.push('/login')
@@ -39,7 +51,25 @@ class Mine extends Component{
                 </div>
                </div>
 
-              <div className='dindan'>
+            {
+                this.state.list.map((item)=>(
+                <div className='dindan' key={item.title}>
+                <div className='dindan-tou'>
+                    <span>{item.title}</span>
+                    <span className='s-l'>{item.moreText}</span>
+                </div>
+                {
+                    item.item.map(i=>(
+                        <div className='tubia' key={i.title}>
+                        <img src={i.imagePath} alt='' className='tu'/>
+                            <span>{i.title}</span>
+                        </div>
+                    ))
+                }
+                    </div>
+                ))
+            }
+              {/* <div className='dindan'>
                   <div className='dindan-tou'>
                       <span>我的订单</span>
                       <span className='s-l'>全部订单</span>
@@ -98,7 +128,7 @@ class Mine extends Component{
                   <CreditCardOutlined className='tu' />
                       <span>代付款</span>
                   </div>
-              </div>
+              </div> */}
             </div>
             
             
