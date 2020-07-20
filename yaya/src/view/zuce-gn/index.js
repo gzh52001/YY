@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import '../../style/login.scss'
+import '../../style/reg.scss'
 import userApi from "../../api/login.js";
 class NormalLoginForm extends Component {
   constructor(props){
@@ -9,10 +9,22 @@ class NormalLoginForm extends Component {
     this.state = {};
   }
    onFinish = async values => {
-    let { username, password } =values;
-    let result = await userApi.login({username,password});
+       try{
+           let { username, password } =values;
+    let result = await userApi.checkname({username,password});
     console.log(result.data);
-    console.log(username,password);
+    if(result.data.flag==true){
+        let result = await userApi.reg({username,password});
+        // this.$md5(this.password);
+        console.log('注册成功');
+        // this.$router.push("/denglu");
+      }else{
+        console.log('用户已存在');
+      }
+       }catch (err){
+
+       }
+    
   };
   render () {
   return (
@@ -57,7 +69,7 @@ class NormalLoginForm extends Component {
 
       <Form.Item className='oo'>
         <Button type="primary" htmlType="submit" className="login-form-button">
-          登录
+          注册
         </Button>
       </Form.Item>
     </Form>
