@@ -46,13 +46,14 @@
     // background: red;
     overflow: auto;
     .sort-count-2-left{
+        position: fixed;
         float: left;
         width: vw(95);
     }
     .sort-count-2-right{
-        float: left;
+        float: right;
         width:vw(253);
-        margin-left:14px;
+        margin-right:14px;
         img{
             float: left;
             height: vh(85);

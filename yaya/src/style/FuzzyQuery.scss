@@ -1,0 +1,46 @@
+@function vw($px){
+    @return($px/375)*100vw;
+}
+@function vh($px){
+    @return($px/667)*100vh;
+}
+.FuzzyQuery{
+  position: absolute;
+  width: 100%;
+ height: 100%;
+background: #fff;
+z-index: 999;
+.FuzzyQuery-count-1{
+    // width: vw(316);
+    // height: 8%;
+    height: vh(44);
+    // background: red;
+    padding:8px 0;
+    .FuzzyQuery-count-1-1{
+        float: left;
+        width: vw(44);
+        height: vh(30);
+        padding-top:3px ;
+        // background: yellow;
+        svg{
+            font-size: 24px;
+        }
+    }
+    .ant-input-affix-wrapper-lg{
+        float: left;
+        border-radius:50px ;
+        width: vw(287);
+        height: vh(30);
+    }
+    .FuzzyQuery-count-1-2{
+        float: left;
+        width: vw(40);
+        height: vh(30);
+        padding-top:3px ;
+        // background: yellow;
+        svg{
+            font-size: 24px;
+        }
+    }
+}
+}
