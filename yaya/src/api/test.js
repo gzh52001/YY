@@ -21,18 +21,27 @@ export default {
             url:"/add-api/user/userInfo/v1"
         });
     },
+    //分类列表数据
     getlist(id){
         return axios({ //返回一个promise对象
             method: 'get',
             url:"/add-api/products/search/v1?coll="+id+"&keyword=&productId=&page=1&inStock=0&searchType=1&isPID=1&from=&hspid=&brandId="
         });
     },
-getmine() {
+    //我的页面接口数据
+    getmine() {
         return axios({ //返回一个promise对象
             method: 'get',
             url:'/add-api/member/index/v3?v=0.32552813180810625&from='
         });
     },
+    //详情页数据接口
+    getDetails(id){
+        return axios({ //返回一个promise对象
+            method: 'get',
+            url:'/add-api/sc/products/getDetailStatic/v3?ppid='+id
+        });
+    }
 
 }
     

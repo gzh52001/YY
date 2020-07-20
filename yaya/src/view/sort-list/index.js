@@ -1,7 +1,6 @@
 import React from 'react';
 import { Input, Menu } from 'antd';
 import { SearchOutlined, LeftOutlined, UnorderedListOutlined } from '@ant-design/icons';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 import '../../style/sort-list.scss'
 import appjson from '../../api/test'
 class SortList extends React.Component {
@@ -17,7 +16,7 @@ class SortList extends React.Component {
 
     }
    async componentWillMount() {
-       console.log(this.props);
+    //    console.log(this.props);
      const id=this.props.match.params.id
         try{
             let a=await appjson.getlist(id)
@@ -38,6 +37,38 @@ class SortList extends React.Component {
         // console.log(this.props);
         this.props.history.goBack();
     }
+    rise=()=>{//升序
+        // console.log(this.state.list[0].price);
+        this.setState({
+         list:this.state.list.sort(function (objectN, objectM) {
+                // console.log(objectN.price,objectM.price);
+              var valueN = objectN.price
+              var valueM = objectM.price
+              if (valueN < valueM) return valueM - valueN
+              else if (valueN > valueM) return valueM - valueN
+              else return 0
+         }
+            ) 
+        })  
+}
+
+drop=()=>{//降序
+    this.setState({
+        list:this.state.list.sort(function (objectN, objectM) {
+            //    console.log(objectN.price,objectM.price);
+             var valueN = objectN.price
+             var valueM = objectM.price
+             if (valueN < valueM) return valueN - valueM
+             else if (valueN > valueM) return valueN - valueM
+             else return 0
+        }
+           ) 
+       })   
+}
+xqy=(id)=>{
+console.log(id);
+this.props.history.push('/DetailsPage/'+id)
+}
     render() {
         const { SubMenu } = Menu;
         return (
@@ -56,8 +87,8 @@ class SortList extends React.Component {
             <Menu.Item key="setting:2">降序</Menu.Item>
         </SubMenu>
         <SubMenu title="价格">
-            <Menu.Item key="setting:3">升序</Menu.Item>
-            <Menu.Item key="setting:4">降序</Menu.Item>
+            <Menu.Item key="jg-rise" onClick={this.rise}>升序</Menu.Item>
+            <Menu.Item key="jq-drop" onClick={this.drop}>降序</Menu.Item>
         </SubMenu>
         <SubMenu title="最新上架">
             <Menu.Item key="setting:5">升序</Menu.Item>
@@ -73,7 +104,7 @@ class SortList extends React.Component {
             <ul className='sortList-count-3-ul'>
                 {
                 this.state.list.map((item,idx)=>(
-                <li className='sortList-count-3-li' key={item.imagePath}>
+                <li className='sortList-count-3-li' key={item.id} onClick={this.xqy.bind(this,item.id)}>
                   <img src={item.imagePath} />
                   <div className='sortList-count-3-right'>
                       <p className='sortList-count-3-right-1'>{item.name}</p>

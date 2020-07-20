@@ -16,10 +16,13 @@ class FuzzyQuery extends React.Component {
     }
     componentDidMount() {
         // this.place()
-
+        console.log(111); 
     }
     componentWillMount() {
         console.log(this.props);
+        
+       
+
 
     }
     //模糊查询
@@ -83,7 +86,7 @@ class FuzzyQuery extends React.Component {
             <div className='FuzzyQuery'>
                 <div className='FuzzyQuery-count-1'>
                     <div onClick={this.chage}><LeftOutlined className='FuzzyQuery-count-1-1' /></div>
-                    <Input size="large" placeholder={place?place:'华为D'} prefix={<SearchOutlined />} onChange={
+                   <Input size="large" placeholder={place?place:'华为D'} prefix={<SearchOutlined />} onChange={
                         (e) => {
                             this.seach(e.target.value)
                         }
