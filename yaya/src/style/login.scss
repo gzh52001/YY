@@ -1,0 +1,55 @@
+@function vw($px){
+    @return($px/375)*100vw;
+}
+@function vh($px){
+    @return($px/667)*100vh;
+}
+
+.login{
+    height: vh(667);
+    background: #fff;
+    position: relative;
+    z-index: 99;
+}
+.lo-tou{
+    width: vw(375);
+    height: vh(44);
+    // background: skyblue;
+    border-bottom: 1px rgb(238, 238, 238) solid;
+}
+.jt{
+    width: vw(50);
+    height: vh(44);
+    float: left;
+    line-height: vh(44);
+    text-align: center;
+    font-size: 20px;
+}
+.jt2{
+    width: vw(50);
+    height: vh(44);
+    float: right;
+    line-height: vh(44);
+    text-align: center;
+    font-size: 30px;
+}
+.lo-tou p{
+    line-height: vh(44);
+    font-size: 17px;
+}
+.lo-tou .jit-p{
+    height: vh(44);
+    width: vw(50);
+    float: left;
+    margin: 0 0 0 vw(120);
+}
+.zhmm{
+    width: vw(200);
+    height: vh(25);
+    margin-left: vw(85);
+    margin-top: vh(20);
+    margin-bottom: vh(20);
+    text-align: center;
+    font-weight: 600;
+    
+}

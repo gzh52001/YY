@@ -37,11 +37,6 @@
 }
 
 
-.login{
-    height: vh(500);
-    overflow:scroll;
-}
-
 .my-shezhi{
     height: vh(45);
     // background: salmon;
@@ -101,8 +96,8 @@
     width: vw(348);
     // height: 100%;
     background: #fff;
-    margin-top: 10px;
-    margin-left: 15px;
+    margin-top: vh(10);
+    margin-left: vw(15);
     float: left;
     border-radius: 5px;
 }
