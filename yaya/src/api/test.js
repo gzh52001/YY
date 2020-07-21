@@ -41,6 +41,14 @@ export default {
             method: 'get',
             url:'/add-api/sc/products/getDetailStatic/v3?ppid='+id
         });
+    },
+
+    //首页
+    getHomePage(id){
+        return axios({ //返回一个promise对象
+            method: 'get',
+            url:`/add-api/floors/v1?label=${id}&page=1&random=0&from=`
+        });
     }
 
 }

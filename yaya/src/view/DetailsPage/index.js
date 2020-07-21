@@ -1,5 +1,4 @@
 import React,{Component} from 'react'
-
 import '../../style/DetailsPage.scss'
 import appjson from '../../api/test'
 import { Carousel } from 'antd';
@@ -32,16 +31,15 @@ class DetailsPage extends Component{
             <div className='DetailsPage'>
             <div className='DetailsPage-count-1'>
             <Carousel autoplay>
-            {/* {
-              list.pictures.map(item=>(
-            <div>
+            {
+            list.pictures? list.pictures.map(item=>(
+            <div key={item}>
                <h3><img src={item}/></h3>
             </div>
-               )) 
-            } */}
-              <div>
-               <h3><img src="https://img2.yaya.cn/pic/product/800x800/20191023154925494.jpg.webp"/></h3>
-            </div>
+               )) :""
+               
+            }
+              
             </Carousel>
           </div>
 
@@ -57,16 +55,31 @@ class DetailsPage extends Component{
         <p className='DetailsPage-count-3-1'>￥{list.price}</p>
         <p className='DetailsPage-count-3-2'>{list.profile}</p>
             <p className='DetailsPage-count-3-3'><span>{list.productName} {list.skuName} </span></p>
-            <p className='DetailsPage-count-3-4'><span className='DetailsPage-count-3-4-1'>面部识别解锁</span><span className='DetailsPage-count-3-4-1'>面部识别解锁</span><span className='DetailsPage-count-3-4-1'>面部识别解锁</span></p>
+            <p className='DetailsPage-count-3-4'>
+              {
+                list.tags?list.tags.map(item=>(<span className='DetailsPage-count-3-4-1' key={item}>{item}</span>)):""
+              }
+              </p><br/>
             <ul className='DetailsPage-count-3-5'><li className='DetailsPage-count-3-5-1'>价格走势</li><li className='DetailsPage-count-3-5-1'>降价通知</li><li className='DetailsPage-count-3-5-1'>商品对比</li><li className='DetailsPage-count-3-5-1'>开箱展示</li></ul>
             <p className='DetailsPage-count-3-6'>温馨提示：活动版仅限云南省办理移动5G套餐客户购买</p>
           </div>
 
           <div className='DetailsPage-count-4'>
             <div className='DetailsPage-count-4-1'><span className='DetailsPage-count-4-1-span'>规格</span></div>
-            <ul className='DetailsPage-count-4-2'><li className='DetailsPage-count-4-2-li'><p>屏幕尺寸</p><p>6.1英寸</p></li><li className='DetailsPage-count-4-2-li'><p>屏幕尺寸</p><p>6.1英寸</p></li><li className='DetailsPage-count-4-2-li'><p>屏幕尺寸</p><p>6.1英寸</p></li><li className='DetailsPage-count-4-2-li'><p>主屏分辨率</p><p>6.1英寸111111111</p></li></ul>
+            <ul className='DetailsPage-count-4-2'>
+              {
+                list.params?list.params.map(item=>(<li className='DetailsPage-count-4-2-li' key={item.key}><p>{item.key}</p><p>{item.value}</p></li>)):''
+              }
+              
+              {/* <li className='DetailsPage-count-4-2-li'><p>屏幕尺寸</p><p>6.1英寸</p></li>
+              <li className='DetailsPage-count-4-2-li'><p>屏幕尺寸</p><p>6.1英寸</p></li>
+              <li className='DetailsPage-count-4-2-li'><p>主屏分辨率</p><p>6.1英寸111111111</p></li>
+              <li className='DetailsPage-count-4-2-li'><p>主屏分辨率</p><p>6.1英寸111111111</p></li>
+              <li className='DetailsPage-count-4-2-li'><p>主屏分辨率</p><p>6.1英寸111111111</p></li>
+              <li className='DetailsPage-count-4-2-li'><p>主屏分辨率</p><p>6.1英寸111111111</p></li>
+              <li className='DetailsPage-count-4-2-li'><p>主屏分辨率</p><p>6.1英寸111111111</p></li> */}
+              </ul>
           </div>
-
           <div className='DetailsPage-count-5'>
         <div className='DetailsPage-count-5-1'><i></i><br/><span>客服</span></div>
         <div className='DetailsPage-count-5-1'><i style={{backgroundImage : `url("//img2.ch999img.com/pic/topic/2019030810424913.png")`}}></i><br/><span>客服</span></div>
@@ -78,4 +91,5 @@ class DetailsPage extends Component{
         )
     }
 }
+
 export default DetailsPage

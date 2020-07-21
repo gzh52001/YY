@@ -4,12 +4,50 @@
 @function vh($px){
     @return($px/667)*100vh;
 }
-
 .home{
     width: vw(375);
     height: 100%;
     overflow: auto;
     .home-count-1{
-        // height: 2000px;
+        background: orange;
+        width: vw(375);
+        height: vh(114);
+        // background: red;
+        padding-top: vh(34);
+        
+        .home-count-2{
+     width: vw(375);
+    // height: 8%;
+    margin: auto;
+    height: vh(44);
+    // background: red;
+    padding:8px 0;
+    .ant-input-affix-wrapper-lg{
+        float: left;
+        margin-left: 10px;
+        border-radius:50px ;
+        width: vw(355);
+        height: vh(34);
     }
+
+}
+.home-count-3{  
+    width: 100%;
+    height: vh(34);
+    // background: red;
+    .ant-menu-horizontal{
+        background: orange;
+        .ant-menu-item-active{    border-bottom: 0;}
+        .ant-menu-item-selected{    border-bottom: 0;}
+        .ant-menu-item{ border-bottom: 0;}
+    }
+}
+    }
+    .home-count-4{
+        width: 100%;
+        height: 81%;
+        // background: red;
+        background: rgb(240, 238, 238);
+        overflow: auto;
+    } 
 }

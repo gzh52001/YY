@@ -1,21 +1,78 @@
 import React,{Component} from 'react'
-import Button from '@material-ui/core/Button';
+import {Route,Switch,Redirect,withRouter} from 'react-router-dom'
+import { Input, Menu } from 'antd';
+import { SearchOutlined} from '@ant-design/icons';
 import '../../style/home.scss'
+import appjson from '../../api/test'
 // import appjson from '../../api/test'
+
+import Recommend from '../../view/home-recommend'
+import Recovery from '../../view/home-recovery'
+import AfterService from '../../view/home-afterService'
+import TopNews from '../../view/home-topNews'
 class Home extends Component{
-    componentWillMount(){
-        console.log(this.props);
+    state={
+        current:'',
+        list:[]
+    }
+   async componentWillMount(){
+    //    console.log("111",this.props.history.location.pathname);
+       let id=this.props.match.params.id
+       if(!id){
+          id=0
+       }
+       try{
+            let a=await appjson.getHomePage(id)
+            this.setState({
+                list:a.data.data.label,
+                current:a.data.data.label[0].id
+            })
+            this.props.history.push('/home/recommend/'+this.state.current)
+            // console.log(a.data.data.label);
+       }catch(err){
+           console.log(err);
+       }
+    }
+    handleClick = e => {
+        // console.log('click ', e);
+        this.setState({ current: e.key });
+      };
+    tiao=(id)=>{
+        // console.log(id);
+        // console.log("666",this.props);
+        this.props.history.push('/home/'+id.b+'/'+id.a)
     }
     render(){
+          const {current}=this.state
         return(
             <div className='home'>
-            <div className='home-count-1'>
-            <Button variant="contained" color="primary">
-            首页
-          </Button>
-          </div>
-          </div>
+            <div  className='home-count-1'>
+                <div className='home-count-2'>
+               <Input size="large" prefix={<SearchOutlined />} />
+            </div>
+            <div className='home-count-3'>
+            <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
+                {
+                    this.state.list.map((item,idx)=>(
+                         <Menu.Item key={item.id} onClick={this.tiao.bind(this,{a:item.id,b:item.tabKey})}>
+                            {item.title}
+                         </Menu.Item>
+                    ))
+                }
+            </Menu>
+            </div>
+            </div>
+            <div className='home-count-4'>
+            <Switch>
+            <Route  path="/home/recommend/:id" component={Recommend}/> {/* 推荐 */}
+            <Route  path="/home/recovery/:id" component={Recovery}/>{/* 以旧换新 */}
+            <Route  path="/home/afterService/:id" component={AfterService}/>{/* 手机快修 */}
+            <Route  path="/home/topNews/:id" component={TopNews}/>{/* 查询 */}
+            </Switch>
+            </div>
+            </div>
         )
     }
 }
+// Home=withRouter(Home)
 export default Home

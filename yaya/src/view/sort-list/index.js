@@ -37,6 +37,9 @@ class SortList extends React.Component {
         // console.log(this.props);
         this.props.history.goBack();
     }
+    sousuo=()=>{
+        this.props.history.push('/FuzzyQuery')
+    }
     rise=()=>{//升序
         // console.log(this.state.list[0].price);
         this.setState({
@@ -75,7 +78,7 @@ this.props.history.push('/DetailsPage/'+id)
             <div className='sortList'>
                 <div className='sortList-count-1'>
                     <div onClick={this.chage}><LeftOutlined className='sortList-count-1-1' /></div>
-                    <Input size="large" placeholder='华为' prefix={<SearchOutlined />} />
+                    <Input size="large" placeholder='华为' prefix={<SearchOutlined />} onClick={this.sousuo} />
                     <UnorderedListOutlined className='sortList-count-1-2' />
                 </div>
             <div className='sortList-count-2'>

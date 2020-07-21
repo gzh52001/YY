@@ -15,7 +15,7 @@ class Footer extends Component{
             label:'Recents', 
             value:'recents',
             icon:<HomeIcon />,
-            path:'/home'
+            path:'/'
           },
           {
             label:'Favorites', 

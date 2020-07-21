@@ -31,7 +31,8 @@ class Math extends Component{
                return <div>404</div>
            }}/>
 
-            <Redirect from='/' to='/home' exact/>
+            <Redirect from='/' to='/home/recommend' exact/>
+            {/* <Redirect from='/home' to='/home/recommend/:id' exact/> */}
             <Redirect to='/notfount'/>
            </Switch>
           </div>
