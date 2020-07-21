@@ -18,20 +18,20 @@ export default {
             
         });
     },
-    reg(username,password){
+    reg ({ username, password }){
         return request.post('/shi-api/user/reg',{
             username,
             password
         })
     },
-    checkname(username){
+    checkname({username}){
         return request.get('/shi-api/user/checkname',{
             params:{
                 username
             }
         })
     },
-    login(username,password){
+    login ({username,password}){
         return request.get('/shi-api/user/login',{
             params:{
                 username,

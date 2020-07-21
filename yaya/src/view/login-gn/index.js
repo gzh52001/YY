@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import { withRouter } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../../style/login.scss'
@@ -13,6 +14,12 @@ class NormalLoginForm extends Component {
     let result = await userApi.login({username,password});
     console.log(result.data);
     console.log(username,password);
+    if(result.data.flag){
+      this.props.history.push('/mine')
+      localStorage.setItem('xiaomi-username',username);
+    }else{
+      console.log('密码错误')
+    }
   };
   render () {
   return (
@@ -64,4 +71,5 @@ class NormalLoginForm extends Component {
   );
 };
 }
+NormalLoginForm=withRouter(NormalLoginForm)
 export default NormalLoginForm

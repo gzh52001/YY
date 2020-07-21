@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import '../../style/reg.scss'
-import NormalLoginForm from '../../view/zuce-gn'
+import RForm from '../../view/zuce-gn'
 import {
     LeftOutlined,
     EllipsisOutlined
@@ -19,7 +19,7 @@ class Reg extends Component{
                 <div className='jit-p'><p>用户注册</p></div>
                 <div className='jt2'><EllipsisOutlined /></div>
             </div>
-            <div className='fk'><NormalLoginForm></NormalLoginForm></div>
+            <div className='fk'><RForm></RForm></div>
           </div>
         )
     }

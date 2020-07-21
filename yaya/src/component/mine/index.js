@@ -5,7 +5,8 @@ import apijson from '../../api/test'
 import '../../style/mine.scss'
 class Mine extends Component{
     state={
-        list:[]
+        list:[],
+        umm:''
     }
     async componentWillMount(){
         try{
@@ -20,6 +21,17 @@ class Mine extends Component{
         }catch(a){
             console.log(a);
         }
+        const a=localStorage.getItem('xiaomi-username')
+        if(a){
+    this.setState({
+        umm:a
+    })
+        }else{
+            this.setState({
+                umm:''
+            })
+        }
+    
     }
     chage=()=>{
             // console.log(this.props);
@@ -27,8 +39,16 @@ class Mine extends Component{
             }
         caage=()=>{
                 // console.log(this.props);
+           
                 this.props.history.push('/reg')
                 }
+            romev=()=>{
+                 this.setState({
+                umm:''
+            })
+                    localStorage.removeItem('xiaomi-username');
+
+                    }
     render(){
         
         return(
@@ -39,9 +59,11 @@ class Mine extends Component{
                     <span>设置</span>
                 </div>
                 <div className='my-shezhi2'>
-                    <div className='touxiang'></div>
-                    <span className='aii' onClick={this.chage}>登录 |</span>
-                    <span className='aii2' onClick={this.caage}> 注册</span>
+                            <div className='touxiang'></div>
+                            {this.state.umm?
+                        <span className='aii' onClick={this.romev}>欢迎您:<span style={{color:'#666',fontSize:20}}>{this.state.umm}</span>大佬</span>:
+                            <><span className='aii' onClick={this.chage}>登录 |</span>
+                            <span className='aii2' onClick={this.caage}> 注册</span></> }
                 </div>
                 <div className='jifen'>
                     <div className='jifen-t'><span>0</span>收藏商品</div>

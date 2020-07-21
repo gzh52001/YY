@@ -1,9 +1,10 @@
 import React,{Component} from 'react'
+import { withRouter } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../../style/reg.scss'
 import userApi from "../../api/login.js";
-class NormalLoginForm extends Component {
+class RForm extends Component {
   constructor(props){
     super(props);
     this.state = {};
@@ -11,13 +12,13 @@ class NormalLoginForm extends Component {
    onFinish = async values => {
        try{
            let { username, password } =values;
-    let result = await userApi.checkname({username,password});
-    console.log(result.data);
-    if(result.data.flag==true){
-        let result = await userApi.reg({username,password});
+    let resu = await userApi.checkname({username});
+    console.log(resu.data);
+    if(resu.data.flag==true){
+        let resu = await userApi.reg({username,password});
         // this.$md5(this.password);
         console.log('注册成功');
-        // this.$router.push("/denglu");
+        this.props.history.push('/login')
       }else{
         console.log('用户已存在');
       }
@@ -76,4 +77,5 @@ class NormalLoginForm extends Component {
   );
 };
 }
-export default NormalLoginForm
+RForm=withRouter(RForm)
+export default RForm
