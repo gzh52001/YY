@@ -12,6 +12,10 @@ class Login extends Component{
             // console.log(this.props);
             this.props.history.push('/mine')
             }
+        caage=()=>{
+                // console.log(this.props);
+                this.props.history.push('/reg')
+                }
     render(){
         return(
             <div className='login'> 
@@ -24,6 +28,7 @@ class Login extends Component{
                 账号密码登录
             </div>
             <NormalLoginForm></NormalLoginForm>
+            <div className='xzc' onClick={this.caage}>新用户注册</div>
           </div>
         )
     }

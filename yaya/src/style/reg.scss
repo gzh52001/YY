@@ -5,7 +5,7 @@
     @return($px/667)*100vh;
 }
 
-.login{
+.reg{
     height: vh(667);
     background: #fff;
     position: relative;
@@ -39,10 +39,11 @@
 }
 .lo-tou .jit-p{
     height: vh(44);
-    width: vw(50);
+    width: vw(100);
     float: left;
-    margin: 0 0 0 vw(120);
+    margin: 0 0 0 vw(100);
 }
+
 .zhmm{
     width: vw(200);
     height: vh(25);
@@ -81,4 +82,8 @@
     width: vw(90);
     float: left;
     margin-left: vw(20);
+}
+
+.fk{
+    margin-top: vh(30);
 }

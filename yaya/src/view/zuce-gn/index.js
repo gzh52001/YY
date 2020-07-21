@@ -2,24 +2,30 @@ import React,{Component} from 'react'
 import { withRouter } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import '../../style/login.scss'
+import '../../style/reg.scss'
 import userApi from "../../api/login.js";
-class NormalLoginForm extends Component {
+class RForm extends Component {
   constructor(props){
     super(props);
     this.state = {};
   }
    onFinish = async values => {
-    let { username, password } =values;
-    let result = await userApi.login({username,password});
-    console.log(result.data);
-    console.log(username,password);
-    if(result.data.flag){
-      this.props.history.push('/mine')
-      localStorage.setItem('xiaomi-username',username);
-    }else{
-      console.log('密码错误')
-    }
+       try{
+           let { username, password } =values;
+    let resu = await userApi.checkname({username});
+    console.log(resu.data);
+    if(resu.data.flag==true){
+        let resu = await userApi.reg({username,password});
+        // this.$md5(this.password);
+        console.log('注册成功');
+        this.props.history.push('/login')
+      }else{
+        console.log('用户已存在');
+      }
+       }catch (err){
+
+       }
+    
   };
   render () {
   return (
@@ -64,12 +70,12 @@ class NormalLoginForm extends Component {
 
       <Form.Item className='oo'>
         <Button type="primary" htmlType="submit" className="login-form-button">
-          登录
+          注册
         </Button>
       </Form.Item>
     </Form>
   );
 };
 }
-NormalLoginForm=withRouter(NormalLoginForm)
-export default NormalLoginForm
+RForm=withRouter(RForm)
+export default RForm

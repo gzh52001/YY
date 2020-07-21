@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- express 主页 -->
+    <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAMAAAAPdrEwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjYyN0RCN0I4NUE1MTFFNzgwRjJBODgyQzJFQjhBQ0UiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjYyN0RCN0E4NUE1MTFFNzgwRjJBODgyQzJFQjhBQ0UiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5M0VEOUY2MkNCMzgxMUU2QTZDMkVFQTk4MTdEQjk4MSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5M0VEOUY2M0NCMzgxMUU2QTZDMkVFQTk4MTdEQjk4MSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ph4QmhcAAADAUExURWRrepiotWuE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"
+        alt=""> -->
+
+    <h1>上传单个图片</h1>
+    <input type="file" id="touxiang">
+    <input type="button" value="上传头像" id="btn1">
+
+    <hr>
+
+    <h1>上传多个图片 multiple</h1>
+    <input type="file" id="good" multiple>
+    <input type="button" value="上传商品图片" id="btn2">
+
+</body>
+<script src="./js/jquery-1.10.1.min.js"></script>
+<script>
+
+    //jq版上传图片
+
+    //vue版上传文件：https://blog.csdn.net/weixin_39378691/article/details/83655052
+    /*
+        FormData() H5新特性：发送数据给后端特别是文件的时候使用的
+        * new FormData() 实例化
+        * 方法
+            * set(key,value)
+            * append(key, value) 追加键值对
+            * get(key)
+            * has(key)
+            * getAll(key)
+            * delete(key)
+            * 
+            * https://www.jianshu.com/p/cc650075b33b
+    */
+
+    //上传头像
+    // console.log(666);
+    $('#btn1').click(() => {
+        let formdata = new FormData();
+        formdata.append('avatar', $('#touxiang')[0].files[0]);//添加一个文件
+        formdata.append('uid', 87);//添加数据
+
+        $.ajax({
+            url: '/upload/touxiang',
+            type: 'post',
+            cache: false,
+            data: formdata,
+            processData: false,
+            contentType: false,//设置false:multipart/form-data
+            success: function (data) {
+                console.log(data);
+            }
+        })
+        // console.log($('#touxiang')[0].files[0]);
+    });
+
+
+    //上传多个图片
+    $('#btn2').click(() => {
+        // console.log($('#good')[0].files);//对象{}
+
+        //创建对象
+        let formdata = new FormData();
+
+        //添加数据
+        for (let key in $('#good')[0].files) {
+            formdata.append('goods', $('#good')[0].files[key]);
+        }
+
+        formdata.append('id', 1);//添加数据
+
+        $.ajax({
+            url: '/upload/goodsimg',
+            type: 'post',
+            cache: false,
+            data: formdata,
+            processData: false,
+            contentType: false,//设置false:multipart/form-data
+            success: function (data) {
+                console.log(data);
+            }
+        })
+        // console.log($('#touxiang')[0].files[0]);
+    });
+
+</script>
+
+</html>

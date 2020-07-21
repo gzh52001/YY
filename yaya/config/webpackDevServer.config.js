@@ -113,6 +113,17 @@ module.exports = function(proxy, allowedHost) {
            "^/add-api": ''
         }
     },
+    "/shi-api": {//对象的属性名如果是变量，一定要加方括号
+      // target: 'http://localhost:8800/',//目标服务器的地址
+      // target: 'https://4r6q0l.coding-pages.com',//目标服务器的地址
+      target:"http://localhost:3099",//目标服务器的地址,
+      changeOrigin: true,//开启代理
+      //拼接的地址：http://localhost:8800/dev-api/db.json
+      //真实的接口：http://localhost:8800/db.json
+      pathRewrite: { //替换路径
+         "^/shi-api": ''
+      }
+  },
     },
     before(app, server) {
       // Keep `evalSourceMapMiddleware` and `errorOverlayMiddleware`

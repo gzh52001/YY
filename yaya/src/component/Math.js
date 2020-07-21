@@ -12,6 +12,7 @@ import DetailsPage from '../view/DetailsPage'
 import '../style/main.scss'
 import Login from './login'
 import Reg from './reg'
+import Zskf from '../view/zskf'
 class Math extends Component{
     render(){
         return(
@@ -27,6 +28,7 @@ class Math extends Component{
            <Route  path="/DetailsPage/:id" component={DetailsPage}/>{/* 详情页 */}
            <Route  path="/login" component={Login}/>
            <Route  path="/reg" component={Reg}/>
+           <Route  path="/zskf" component={Zskf}/>
            <Route  path="/notfount" component={()=>{
                return <div>404</div>
            }}/>
