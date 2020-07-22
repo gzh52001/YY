@@ -8,6 +8,7 @@ import Mine from './mine'
 import Shopp from './shopp'
 import SortList from '../view/sort-list'
 import FuzzyQuery from '../view/FuzzyQuery'
+import SearchList from '../view/search-list'
 import DetailsPage from '../view/DetailsPage'
 import '../style/main.scss'
 import Login from './login'
@@ -25,6 +26,7 @@ class Math extends Component{
            <Route  path="/mine" component={Mine}/>{/* 我的 */}
            <Route  path="/sort-list/:id" component={SortList}/>{/*分类-商品列表*/}
            <Route  path="/FuzzyQuery" component={FuzzyQuery}/>{/* 模糊搜索 */}
+           <Route  path="/search-list/:id" component={SearchList}/>{/*模糊搜索-商品列表*/}
            <Route  path="/DetailsPage/:id" component={DetailsPage}/>{/* 详情页 */}
            <Route  path="/login" component={Login}/>
            <Route  path="/reg" component={Reg}/>

@@ -7,14 +7,14 @@ class Recommend extends Component{
         list:[]
     }
    async componentWillMount(){
-        console.log("recommend",this.props.match.params.id);
+        // console.log("recommend",this.props.match.params.id);
        const id=this.props.match.params.id
         try{
             let a=await appjson.getHomePage(id)
             this.setState({
                 list:a.data.data.container.floor
             })
-            console.log(a.data.data.container.floor);
+            // console.log(a.data.data.container.floor);
         }catch(err){
             console.log(err);
         }
@@ -120,12 +120,12 @@ class Recommend extends Component{
                     </li>
                        )):''
                    }
-                   <li className='recommend-count-9-li'>
+                   {/* <li className='recommend-count-9-li'>
                        <img  className='recommend-count-9-img' src="https://img2.yaya.cn/pic/product/440x440/20200706114202400.jpg.webp"/>
                        <div>Apple iPhone 11 全网通版</div>
                        <p>全新双摄系统取景</p>
                        <span>￥123456</span>
-                   </li>
+                   </li> */}
                </ul>
           </div>
         )

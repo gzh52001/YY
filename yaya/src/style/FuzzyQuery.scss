@@ -42,5 +42,24 @@ z-index: 999;
             font-size: 24px;
         }
     }
+
 }
+    .FuzzyQuery-count-2{
+        ul{
+          li{
+            width: 100%;
+            height: vh(44);
+            // background: red;
+            border-bottom: 1px solid #f1efef;
+            border-top: 1px solid #f1efef;
+            span{
+                line-height: vh(44);
+            }
+            .FuzzyQuery-count-2-i{
+                float: right;
+            }
+        } 
+        }
+  
+    }  
 }

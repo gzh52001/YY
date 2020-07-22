@@ -18,6 +18,7 @@ class Home extends Component{
    async componentWillMount(){
     //    console.log("111",this.props.history.location.pathname);
        let id=this.props.match.params.id
+    //    console.log('123',id);
        if(!id){
           id=0
        }
@@ -28,7 +29,7 @@ class Home extends Component{
                 current:a.data.data.label[0].id
             })
             this.props.history.push('/home/recommend/'+this.state.current)
-            // console.log(a.data.data.label);
+            // console.log(a.data.data.label[0]);
        }catch(err){
            console.log(err);
        }

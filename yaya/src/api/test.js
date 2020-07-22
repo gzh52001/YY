@@ -15,6 +15,14 @@ export default {
             url:`/add-api/search/recommendSearch/v1?keyword=${id}&searchType=1&count=10`
         });
     },
+
+    //模糊搜索商品数据
+    searchList(id) {
+        return axios({ //返回一个promise对象
+            method: 'get',
+            url:`/add-api/products/search/v1?coll=0-0-0-0-0_0&productId=${id}&page=1&inStock=0&searchType=1&isPID=1&from=&hspid=&brandId=`
+        });
+    },
     searchPlaceholder(){
         return axios({ //返回一个promise对象
             method: 'get',
