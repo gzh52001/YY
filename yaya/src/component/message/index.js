@@ -21,7 +21,7 @@ class Message extends Component{
         return(
             <div className='message'> 
             <div className='message-tou'>
-                <div className='jt' onClick={this.chagod}><LeftOutlined /></div>
+                <div className='jt'><LeftOutlined /></div>
                 <div className='mes-p'><p>消息中心</p></div>
                 <div className='mes2'><WarningOutlined className='mt-1'/>投诉</div>
                 <div className='mes3' onClick={this.caa}><SketchOutlined className='mt-1'/>专属客服</div>

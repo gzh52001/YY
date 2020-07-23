@@ -45,7 +45,7 @@ class CustomNav extends Component {
             </span>
           }
         >
-          <Menu.Item key="13" path='/admin/user'>用户列表</Menu.Item>
+          <Menu.Item key="3" path='/admin/user'>用户列表</Menu.Item>
         </SubMenu>
         <SubMenu
           key="sub2"
