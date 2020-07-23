@@ -20,6 +20,10 @@ class Recommend extends Component{
         }
 
     }
+    xqy=(id)=>{
+        this.props.history.push('/DetailsPage/'+id)
+        // console.log(id);
+    }
     render(){
         const {list}=this.state
         return(
@@ -96,7 +100,7 @@ class Recommend extends Component{
                           
                              {
                              item.content[0].product.map(item=>(
-                             <li className='recommend-count-7-il' key={item.ppid}><img className='recommend-count-7-il-img' src={item.imagePath}/><p className="recommend-count-7-il-p">{item.title}</p><p className="recommend-count-7-il-p" style={{color:"red",fontWeight:700}}>￥{item.price}</p></li>   
+                             <li className='recommend-count-7-il' key={item.ppid} onClick={this.xqy.bind(this,item.ppid)}><img className='recommend-count-7-il-img' src={item.imagePath}/><p className="recommend-count-7-il-p">{item.title}</p><p className="recommend-count-7-il-p" style={{color:"red",fontWeight:700}}>￥{item.price}</p></li>   
                              ))}
                            
                         <li className='recommend-count-7-il'><img className='recommend-count-7-il-img' src="https://img2.yaya.cn/pic/product/216x216/20200423180917426.jpg.webp"/><p className="recommend-count-7-il-p">华为  荣耀 X10 Max 全网通5G版</p><p className="recommend-count-7-il-p" style={{color:"red",fontWeight:700}}>￥1234</p></li> 
@@ -112,7 +116,7 @@ class Recommend extends Component{
                <ul className='recommend-count-9'>
                    {
                        list[13]?list[13].content.map(item=>(
-                        <li className='recommend-count-9-li' key={item.ppid}>
+                        <li className='recommend-count-9-li' key={item.ppid} onClick={this.xqy.bind(this,item.ppid)}>
                         <img  className='recommend-count-9-img' src={item.imagePath}/>
                        <div>{item.title}</div>
                        <p>{item.sellingPoint}</p>
