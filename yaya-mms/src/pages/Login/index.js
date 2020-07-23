@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import api from '../../api/index.js'
+import userApi from "../../api/login";
 import './login.scss'
 import ReactCanvasNest from 'react-canvas-nest'
 import { Form, Input, Button, Checkbox,message} from 'antd';
@@ -24,25 +24,26 @@ const tailLayout = {
       super(props);
       this.state = {};
     }  
-    //   onFinish = async values => {
-    //     let { userName, passWord } = values 
-    //     let result = await api.login({ userName, passWord })
-    //     if(result.code ===0 ){
-    //       // 登录成功获取token并保存到localstorage
-    //       localStorage.setItem('token',result.token)
-    //       localStorage.setItem('user',userName)
-    //       message.success('登录成功，将跳转首页',3,()=>{
+      onFinish = async values => {
+        let { username, password } = values 
+        let result = await userApi.login({ username, password })
+        if(result.data.flag ){
+          console.log(result.data);
+          // 登录成功获取token并保存到localstorage
+          // localStorage.setItem('token',result.token)
+          // localStorage.setItem('user',userName)
+          message.success('登录成功，将跳转首页',3,()=>{
             
-    //         this.props.history.replace('/admin/manage')
-    //       })
-    //     }else{
-    //       message.error('用户名密码错误')
-    //     }
-    //   };
+            this.props.history.push('/admin/manage')
+          })
+        }else{
+          message.error('用户名密码错误')
+        }
+      };
     
-    //  onFinishFailed = errorInfo => {
-    //   message.error('errorInfo')
-    //   };
+     onFinishFailed = errorInfo => {
+      message.error('errorInfo')
+      };
     
     render () {
       return (
@@ -59,7 +60,7 @@ const tailLayout = {
     >
       <Form.Item  className="login-u"
         label="用户名"
-        name="userName"
+        name="username"
         rules={[{ required: true, message: '请输入名字!' }, {max:9,message:"用户名最长9位"},
         {min:2,message:"用户名最少2位"}]}
             >        
@@ -67,7 +68,7 @@ const tailLayout = {
       </Form.Item>
       <Form.Item
         label="密码"
-        name="passWord"
+        name="password"
         className="login-p"
         rules={[{ required: true, message: '请输入密码!' }]}
       >

@@ -102,11 +102,11 @@ module.exports = function(proxy, allowedHost) {
     public: allowedHost,
     // `proxy` is run between `before` and `after` `webpack-dev-server` hooks
     proxy:{
-      '/mall':{
+      '/shi-api':{
         target:'http://localhost:3099',
         changeOrigin:true,
         pathRewrite:{
-          "^/mall":''
+          "^/shi-api":''
         }
       }
     },
