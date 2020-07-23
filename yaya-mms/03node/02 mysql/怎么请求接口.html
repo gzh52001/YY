@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="">
+
+    /*
+        前后端分离开发->前后端分开上线：目前比较流行的做法
+
+        后端：做接口给前端使用
+            * host: http://localhost:3099
+            * 举例
+                * 前端发起请求获取后端的接口数据
+                * url:http://localhost:3099/user/checkname
+                * 参数：{name:xxx}
+        前端：获取接口的数据
+            * 开启服务器：
+                * 启动前端的服务器：vuecli的服务器 npm run serve
+                * 启动后端的服务器: supervisor server.js
+            * 在前端：
+                * 做代理：配置 vue.config.js  .env.development
+                * 封装axios: utils/request.js
+                * 准备文件夹：src/api/各种接口
+                * 在组件内：调用api接口
+
+    */
+</script>
+
+</html>

@@ -24,21 +24,21 @@ const tailLayout = {
       super(props);
       this.state = {};
     }  
-      // onFinish = async values => {
-      //   let { userName, passWord } = values 
-      //   let result = await api.login({ userName, passWord })
-      //   if(result.code ===0 ){
-      //     // 登录成功获取token并保存到localstorage
-      //     localStorage.setItem('token',result.token)
-      //     localStorage.setItem('user',userName)
-      //     message.success('登录成功，将跳转首页',3,()=>{
+    //   onFinish = async values => {
+    //     let { userName, passWord } = values 
+    //     let result = await api.login({ userName, passWord })
+    //     if(result.code ===0 ){
+    //       // 登录成功获取token并保存到localstorage
+    //       localStorage.setItem('token',result.token)
+    //       localStorage.setItem('user',userName)
+    //       message.success('登录成功，将跳转首页',3,()=>{
             
-      //       this.props.history.replace('/admin/manage')
-      //     })
-      //   }else{
-      //     message.error('用户名密码错误')
-      //   }
-      // };
+    //         this.props.history.replace('/admin/manage')
+    //       })
+    //     }else{
+    //       message.error('用户名密码错误')
+    //     }
+    //   };
     
     //  onFinishFailed = errorInfo => {
     //   message.error('errorInfo')
