@@ -97,7 +97,7 @@ router.get('/login', async (req, res) => {
     //name:账号  psw:密码  keep:是否要七天免登陆 true 就可以生成token
     let { username, password } = req.query;
     try {
-        let sql = `SELECT * FROM user WHERE username='${username}' and password='${password}'`;
+        let sql = `SELECT * FROM admin WHERE username='${username}' and password='${password}'`;
         let a = await query(sql);//[{},{}]
         let inf = {}
         if (a.length) {
