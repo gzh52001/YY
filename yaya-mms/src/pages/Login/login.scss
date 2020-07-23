@@ -1,0 +1,50 @@
+.login-box{
+    width: 100vw;
+    height: 100vh;
+    background: url('http://bpic.588ku.com/back_pic/04/60/33/98586c9d54b5df4.jpg');
+    background-size: cover;
+}
+.login-form{
+    // padding: 30px;
+    position: fixed;
+    right: 150px;
+    top: 30%;
+ 
+    width: 310px;
+    height: 220px;
+    background: rgba(120, 128, 136, 0.5);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    
+}
+.login-u{
+    position: relative;
+    width: 280px;
+    top: 15%;
+    // left: 6%;
+}
+.login-p{
+    position: relative;
+    width: 280px;
+    top: 15%;
+    // left: 6%;
+}
+.login-j{
+    position: relative;
+    top: 8%;
+    right: 20%;
+    // left: 6%;
+    
+}
+.login-d{
+    position: relative;
+    // top: 8%;
+    right: 20%;
+    // left: 6%;
+}
+// .login-a{
+//     color: #fff;
+// }
+.login-form-forgot{
+    color: #fff;
+}
