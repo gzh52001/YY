@@ -21,7 +21,7 @@ class Math extends Component{
             <Switch>
            <Route  path="/home" component={Home}/> {/* 首页 */}
            <Route  path="/sort" component={Sort}/>{/* 分类 */}
-            <Route  path="/message" component={Message}/>{/* 消息 */}
+           <Route  path="/message" component={Message}/>{/* 消息 */}
            <Route  path="/shopp" component={Shopp}/>{/* 购物车 */}
            <Route  path="/mine" component={Mine}/>{/* 我的 */}
            <Route  path="/sort-list/:id" component={SortList}/>{/*分类-商品列表*/}

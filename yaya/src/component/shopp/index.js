@@ -9,12 +9,13 @@ class Shopp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: true,   // 购物车管理开关状态
-            hasgood: false,  // 购物车内是否有商品
+            status: false,   // 购物车管理开关状态
             logstate: false, // 登录状态
             allsel:false,    //全选状态
             goodsList: [],   // 渲染商品列表
-            goods: [{
+            total:0,
+            goods: [
+                {
                 id: 44353,
                 name: "华为 P40 （ANA-AN00）全网通5G版 亮黑色 8GB+128GB 标准版",
                 selgoods:false, //单个商品选中状态
@@ -42,7 +43,8 @@ class Shopp extends Component {
                 num: 1,
                 price: 4699,
                 img: "https://img2.yaya.cn/pic/product/440x440/20200706114206280.jpg"
-            }]
+            }
+        ]
         }
     }
 
@@ -85,7 +87,7 @@ class Shopp extends Component {
             )
         })
 
-        console.log(this.state.num)
+        // console.log(this.state.num)
     }
 
     subNum = (id) => {
@@ -105,9 +107,6 @@ class Shopp extends Component {
         })
 
     }
-    click = (e) => {
-        console.log(e)
-    }
 
     sel = (id,e) => {
         // console.log(id,e.target.checked)
@@ -120,16 +119,15 @@ class Shopp extends Component {
        })
 
         let allcheck = true;
-         
+
          shops.forEach(item =>{
              if(!item.selgoods) {
                 allcheck=false
                 return 
              }
          }) 
-         console.log(allcheck)
+        //  console.log(allcheck)
         this.setState({
-            // selgoods:!this.state.selgoods,
             goods:shops,
             allsel:allcheck
         }) 
@@ -148,12 +146,9 @@ class Shopp extends Component {
             goods:good
             
         })
-            // if(this.state.allsel) {
-            //     console.log('全部勾选',this.state.allsel)
-            // } else {
-            //     console.log('全部取消',this.state.allsel)
-            // }
+        
     }
+
     render() {
         // console.log(this.props)
         // const {goods} = this.state.goodsList
@@ -161,7 +156,7 @@ class Shopp extends Component {
             <div className='shopp'>
                 <div className="header">
                     <div className="title">
-                        <span>购物车(0)</span>
+                        <span>购物车</span>
                     </div>
                     <div className="control">
                         <Link to="#"
@@ -193,7 +188,7 @@ class Shopp extends Component {
                         ''
                     }
                     <div className="itemlist">
-                        {this.state.hasgood ?
+                        {this.state.goods.length===0 ?
                             // 购物车没有商品数据
                             <div className="not">
                                 <span>
@@ -266,9 +261,9 @@ class Shopp extends Component {
                 </div>
                 <div className="total">
                     {!this.state.status ? <div className="computed">
-                        <p>
+                        <p onChange={this.count}>
                             合计：
-                            <span>￥0</span>
+                            <span>￥ {this.state.total}</span>
                             <a href="#/shopp">去结算</a>
                         </p>
                     </div>
@@ -283,7 +278,7 @@ class Shopp extends Component {
                                 共0件商品
                             </span>
 
-                            <a href="#/shopp">删除所选</a>
+                            <a>删除所选</a>
                         </div>
                     }
                 </div>
