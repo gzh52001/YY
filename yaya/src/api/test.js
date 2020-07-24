@@ -8,6 +8,13 @@ export default {
             url:'/add-api/products/category/v1?from='
         });
     },
+    // 获取购物车热卖商品
+    getHotSale() {
+        return axios({
+            method: 'get',
+            url: '/add-api/tmpBasket/list/v3'
+        })
+    },
     //模糊查询
     searchForm(id) {
         return axios({ //返回一个promise对象
