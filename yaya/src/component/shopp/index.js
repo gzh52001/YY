@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { UserOutlined, ExclamationCircleOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 import { Link, withRouter } from 'react-router-dom'
 import quest from '../../api/test'
-
+import {connect} from 'react-redux';
 import '../../style/shop.scss'
 
 class Shopp extends Component {
@@ -11,46 +11,61 @@ class Shopp extends Component {
         this.state = {
             status: false,   // 购物车管理开关状态
             logstate: false, // 登录状态
-            allsel:false,    //全选状态
+            allsel:true,    //全选状态
             goodsList: [],   // 渲染商品列表
-            total:0,
             goods: [
-                {
-                id: 44353,
-                name: "华为 P40 （ANA-AN00）全网通5G版 亮黑色 8GB+128GB 标准版",
-                selgoods:false, //单个商品选中状态
-                num: 1,
-                price: 4488,
-                img: "https://img2.yaya.cn/pic/product/440x440/20200524222618174.jpg"
-            }, {
-                id: 45220,
-                name: "华为 nova 7 SE 全网通5G版 绮境森林 8GB+128GB 标准版",
-                selgoods:false,
-                num: 1,
-                price: 2399,
-                img: "https://img2.yaya.cn/pic/product/440x440/20200527103849223.jpg"
-            }, {
-                id: 41727,
-                name: "华为 Mate 30 （TAS-AN00）全网通5G版 亮黑色 8GB+128GB ",
-                selgoods:false,
-                num: 1,
-                price: 4199,
-                img: "https://img2.yaya.cn/pic/product/440x440/20200602144857340.jpg"
-            }, {
-                id: 41402,
-                name: "Apple iPhone 11 （A2223）全网通版 白色 64GB ",
-                selgoods:false,
-                num: 1,
-                price: 4699,
-                img: "https://img2.yaya.cn/pic/product/440x440/20200706114206280.jpg"
-            }
+            //     {
+            //     id: 44353,
+            //     name: "华为 P40 （ANA-AN00）全网通5G版 亮黑色 8GB+128GB 标准版",
+            //     selgoods:false, //单个商品选中状态
+            //     num: 1,
+            //     price: 4488,
+            //     img: "https://img2.yaya.cn/pic/product/440x440/20200524222618174.jpg"
+            // }, {
+            //     id: 45220,
+            //     name: "华为 nova 7 SE 全网通5G版 绮境森林 8GB+128GB 标准版",
+            //     selgoods:false,
+            //     num: 1,
+            //     price: 2399,
+            //     img: "https://img2.yaya.cn/pic/product/440x440/20200527103849223.jpg"
+            // }, {
+            //     id: 41727,
+            //     name: "华为 Mate 30 （TAS-AN00）全网通5G版 亮黑色 8GB+128GB ",
+            //     selgoods:false,
+            //     num: 1,
+            //     price: 4199,
+            //     img: "https://img2.yaya.cn/pic/product/440x440/20200602144857340.jpg"
+            // }, {
+            //     id: 41402,
+            //     name: "Apple iPhone 11 （A2223）全网通版 白色 64GB ",
+            //     selgoods:false,
+            //     num: 1,
+            //     price: 4699,
+            //     img: "https://img2.yaya.cn/pic/product/440x440/20200706114206280.jpg"
+            // }
         ]
         }
     }
-
+    componentWillMount(){
+         console.log(this.props);
+         this.setState({
+             goods:this.props.goodslist.map(item=>(
+                 {
+                    id:item.goods_id,
+                    name:item.goods_name,
+                    img:item.goods_image,
+                    price:item.goods_price,
+                    num:item.goods_qty,
+                    selgoods:item.selgoods, 
+                 }
+             ))
+         })
+    }
     async componentDidMount() { // 发送请求，请求数据
+       
         try {
             const glists = await quest.getHotSale()
+            
             // console.log(glists)
             this.setState({
                 goodsList: glists.data.data.recommend.list
@@ -76,82 +91,122 @@ class Shopp extends Component {
     }
 
     addNum = (id) => {
-        // console.log('添加了一件商品')
-        this.setState({
-            goods: this.state.goods.map(item => {
-                if (item.id == id) {
-                    item.num = item.num + 1
-                }
-                return item
-            }
-            )
+        const countGoods=this.props.goodslist.filter(item=>item.goods_id==id)[0]
+        this.props.dispatch({
+            type:"change_qty",
+            goods_id:id,
+            goods_qty:countGoods.goods_qty+1,  
         })
-
-        // console.log(this.state.num)
+        this.setState({
+            goods:this.props.goodslist.map(item=>(
+                {
+                   id:item.goods_id,
+                   name:item.goods_name,
+                   img:item.goods_image,
+                   price:item.goods_price,
+                   num:item.goods_qty,
+                   selgoods:item.selgoods, 
+                }
+            ))
+        })
     }
 
     subNum = (id) => {
         // console.log('减掉了一件商品')
-        this.setState({
-            goods: this.state.goods.map(item => {
-                if (item.id == id) {
-                    if (item.num <= 1) {
-                        item.num = 1
-                    } else {
-                        item.num = item.num - 1
-                    }
-                }
-                return item
-            }
-            )
+        const countGoods=this.props.goodslist.filter(item=>item.goods_id==id)[0]
+        this.props.dispatch({
+            type:"change_qty",
+            goods_id:id,
+            goods_qty:countGoods.goods_qty-1,  
         })
+        this.setState({
+            goods:this.props.goodslist.map(item=>(
+                {
+                   id:item.goods_id,
+                   name:item.goods_name,
+                   img:item.goods_image,
+                   price:item.goods_price,
+                   num:item.goods_qty,
+                   selgoods:item.selgoods, 
+                }
+            ))
+        })
+
 
     }
 
     sel = (id,e) => {
         // console.log(id,e.target.checked)
-     
-       let shops = this.state.goods.map(item => {
-           if(item.id==id) {
-               item.selgoods = e.target.checked
-           }
-           return item
-       })
-
-        let allcheck = true;
-
-         shops.forEach(item =>{
-             if(!item.selgoods) {
-                allcheck=false
-                return 
-             }
-         }) 
-        //  console.log(allcheck)
-        this.setState({
-            goods:shops,
-            allsel:allcheck
-        }) 
+        this.props.dispatch({
+            type:"change_selgoods",
+            goods_id:id,
+            selgoods:e.target.checked,  
+        })
         
-       
+        this.setState({
+            goods:this.props.goodslist.map(item=>(
+                {
+                   id:item.goods_id,
+                   name:item.goods_name,
+                   img:item.goods_image,
+                   price:item.goods_price,
+                   num:item.goods_qty,
+                   selgoods:item.selgoods, 
+                }
+            )),
+            allsel:this.props.goodslist.every(item=>item.selgoods)
+        })
+ 
     }
 
-    allselect = () => {
-
-        let good = this.state.goods.map(item =>{item.selgoods = !this.state.allsel
-        return item
+    allselect = (e) => {
+        console.log(e.target.checked);
+        this.props.dispatch({
+            type:"change_selgoods_add",
+            selgoods:e.target.checked,  
         })
-
         this.setState({
-            allsel:!this.state.allsel,
-            goods:good
-            
+            goods:this.props.goodslist.map(item=>(
+                {
+                   id:item.goods_id,
+                   name:item.goods_name,
+                   img:item.goods_image,
+                   price:item.goods_price,
+                   num:item.goods_qty,
+                   selgoods:item.selgoods, 
+                }
+            )),
+            allsel:e.target.checked,
         })
         
+    }
+    tiaoZ=(id)=>{
+        this.props.history.push('/DetailsPage/'+id)
+    }
+
+    shanChu=()=>{
+        this.props.dispatch({
+            type:"remove_from_cart",
+        })
+        // setTimeout 
+        this.setState({
+            goods:this.props.goodslist.map(item=>(
+                {               
+                   id:item.goods_id,
+                   name:item.goods_name,
+                   img:item.goods_image,
+                   price:item.goods_price,
+                   num:item.goods_qty,
+                   selgoods:item.selgoods, 
+                }
+            )),
+        })
     }
 
     render() {
         // console.log(this.props)
         // const {goods} = this.state.goodsList
+        
         return (
             <div className='shopp'>
                 <div className="header">
@@ -162,7 +217,7 @@ class Shopp extends Component {
                         <Link to="#"
                             onClick={this.change}
                         >
-                            {!this.state.status ? '管理' : '完成'}
+                            {this.state.status ? '管理' : '完成'}
                         </Link>
                         <i
                             onClick={this.login}
@@ -202,10 +257,11 @@ class Shopp extends Component {
                             :
                             // 购物车有商品数据
                             <>
-                                {this.state.goods.map(item =>
+                                {this.state.goods.map((item,idx) =>
                                     <div className="has" key={item.id}>
                                         <input type="checkbox" onChange={this.sel.bind(this,item.id)} 
-                                        checked={item.selgoods}
+                                        // checked={item.selgoods}
+                                        defaultChecked={true}
                                          />
                                         <div className="pc">
                                             <img src={item.img} />
@@ -236,7 +292,7 @@ class Shopp extends Component {
                         <ul>
                             {
                                 this.state.goodsList.map(item => <li key={item.productId}>
-                                    <div className="items">
+                                    <div className="items" onClick={this.tiaoZ.bind(this,item.productId)}>
                                         <Link to="#">
                                             <img src={item.sku[0].imagePath} />
                                         </Link>
@@ -260,10 +316,10 @@ class Shopp extends Component {
 
                 </div>
                 <div className="total">
-                    {!this.state.status ? <div className="computed">
-                        <p onChange={this.count}>
+                    {this.state.status ? <div className="computed">
+                        <p>
                             合计：
-                            <span>￥ {this.state.total}</span>
+                                <span>￥{this.props.totalPrice}</span>
                             <a href="#/shopp">去结算</a>
                         </p>
                     </div>
@@ -278,7 +334,7 @@ class Shopp extends Component {
                                 共0件商品
                             </span>
 
-                            <a>删除所选</a>
+                            <a href="#/shopp" onClick={this.shanChu}>删除所选</a>
                         </div>
                     }
                 </div>
@@ -288,4 +344,10 @@ class Shopp extends Component {
 }
 
 Shopp = withRouter(Shopp)
+Shopp=connect(({goodslist})=>({
+    goodslist,
+        // 计算总价格 prev:返回值   prev+item.goods_price*item.goods_qty :之前加上当前价格                  初始值为0
+    totalPrice:goodslist.reduce((prev,item,idx,arr)=>prev+item.goods_price*item.goods_qty,0)
+
+}))(Shopp)
 export default Shopp

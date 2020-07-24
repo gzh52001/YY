@@ -2,7 +2,17 @@ import React,{Component} from 'react'
 import '../../style/DetailsPage.scss'
 import appjson from '../../api/test'
 import { Carousel } from 'antd';
+import store from '../../store'
+import {connect} from 'react-redux';
 // import appjson from '../../api/test'
+// const {goodslist}= store.getState();
+//   console.log('store',goodslist);
+
+store.subscribe(function(){
+    console.log('修改',JSON.stringify(store.getState()));
+})
+
+
 class DetailsPage extends Component{
     state={
         list:[],
@@ -19,11 +29,35 @@ class DetailsPage extends Component{
        }catch(err){
         console.log(err);
        }
-       
     }
     chage = () => {
         // console.log(this.props);
         this.props.history.goBack();
+    }
+
+    gouMai=()=>{
+      
+      const {list:{ppid,imagePath,price,productName}}=this.state
+      const {goodslist,dispatch,addCart,changeQty}=this.props
+      // let goodslist=state.goodslist
+      const countGoods=goodslist.filter(item=>item.goods_id==ppid)[0]
+      if(countGoods){
+        addCart(ppid,countGoods.goods_qty+1)
+      }else{
+        changeQty({
+        goods_id:ppid,
+        goods_name:productName,
+        goods_image:imagePath,
+        goods_price:price,
+        goods_qty:1,
+        selgoods:"true"})
+    
+      }
+    // console.log("111",this.props);
+    }
+    gouMai2=()=>{
+      this. gouMai()
+      this.props.history.push('/shopp')
     }
     render(){
         const {list}=this.state
@@ -82,14 +116,29 @@ class DetailsPage extends Component{
           </div>
           <div className='DetailsPage-count-5'>
         <div className='DetailsPage-count-5-1'><i></i><br/><span>客服</span></div>
-        <div className='DetailsPage-count-5-1'><i style={{backgroundImage : `url("//img2.ch999img.com/pic/topic/2019030810424913.png")`}}></i><br/><span>客服</span></div>
-        <div className='DetailsPage-count-5-1'><i style={{backgroundImage : `url("//img2.ch999img.com/pic/topic/2019030810423645.png")`}}></i><br/><span>客服</span></div>
-          <div className='DetailsPage-count-5-jiaRu'><span>加入购物车</span></div>
-          <div className='DetailsPage-count-5-liJi'><span>立即购买</span></div>
+        <div className='DetailsPage-count-5-1'><i style={{backgroundImage : `url("//img2.ch999img.com/pic/topic/2019030810424913.png")`}}></i><br/><span>收藏</span></div>
+        <div className='DetailsPage-count-5-1'><i style={{backgroundImage : `url("//img2.ch999img.com/pic/topic/2019030810423645.png")`}}></i><br/><span>购物车</span></div>
+          <div className='DetailsPage-count-5-jiaRu' onClick={this.gouMai}><span>加入购物车</span></div>
+          <div className='DetailsPage-count-5-liJi' onClick={this.gouMai2}><span>立即购买</span></div>
           </div>
           </div>
         )
     }
 }
-
+DetailsPage=connect((state)=>({goodslist:state.goodslist}),(dispatch)=>({
+  addCart(goods_id,goods_qty){
+      dispatch({
+          type:"change_qty",
+          goods_id,
+          goods_qty,
+          
+      })
+  },
+  changeQty(goods){
+      dispatch({
+          type:"add_to_cart",
+          goods,
+      })
+  }
+}))(DetailsPage)
 export default DetailsPage
