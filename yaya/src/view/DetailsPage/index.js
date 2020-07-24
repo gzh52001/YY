@@ -50,12 +50,14 @@ class DetailsPage extends Component{
         goods_image:imagePath,
         goods_price:price,
         goods_qty:1,
-        selgoods:false})
+        selgoods:"true"})
     
       }
     // console.log("111",this.props);
-      
-
+    }
+    gouMai2=()=>{
+      this. gouMai()
+      this.props.history.push('/shopp')
     }
     render(){
         const {list}=this.state
@@ -117,7 +119,7 @@ class DetailsPage extends Component{
         <div className='DetailsPage-count-5-1'><i style={{backgroundImage : `url("//img2.ch999img.com/pic/topic/2019030810424913.png")`}}></i><br/><span>收藏</span></div>
         <div className='DetailsPage-count-5-1'><i style={{backgroundImage : `url("//img2.ch999img.com/pic/topic/2019030810423645.png")`}}></i><br/><span>购物车</span></div>
           <div className='DetailsPage-count-5-jiaRu' onClick={this.gouMai}><span>加入购物车</span></div>
-          <div className='DetailsPage-count-5-liJi'><span>立即购买</span></div>
+          <div className='DetailsPage-count-5-liJi' onClick={this.gouMai2}><span>立即购买</span></div>
           </div>
           </div>
         )

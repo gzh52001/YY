@@ -24,12 +24,21 @@ case 'add_to_cart':
 
     }
 //删除商品
+// case 'remove_from_cart':
+//     return{
+//         //先保存原来的数据
+//         ...state,
+//                  //新数据 ，原来的购物车数据
+//         goodslist:state.goodslist.filter(item=>item.goods_id!=action.goods_id)
+//     }
+
+//删除商品
 case 'remove_from_cart':
     return{
         //先保存原来的数据
         ...state,
                  //新数据 ，原来的购物车数据
-        goodslist:state.goodslist.filter(item=>item.goods_id!=action.goods_id)
+        goodslist:state.goodslist.filter(item=>item.selgoods!="true")
     }
 //修改商品
 case 'change_qty':
@@ -44,12 +53,35 @@ case 'change_qty':
             return item
         })
     }
+//商品勾选和反选
+case 'change_selgoods':
+    return{
+        //先保存原来的数据
+        ...state,
+                 //新数据 ，原来的购物车数据
+        goodslist:state.goodslist.map(item=>{
+            if(item.goods_id===action.goods_id){
+                item.selgoods=action.selgoods
+            }
+            return item
+        })
+    }
+//商品全选
+case 'change_selgoods_all':
+    return{
+        //先保存原来的数据
+        ...state,
+                 //新数据 ，原来的购物车数据
+        goodslist:state.goodslist.map(item=>{
+            item.selgoods=action.selgoods
+           return item
+        })
+    }
 //清空商品
 case 'clear_cart':
     
     return{
         goodslist:[]
-
     }
 
 default:
