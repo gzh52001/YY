@@ -11,7 +11,7 @@ class Shopp extends Component {
         this.state = {
             status: false,   // 购物车管理开关状态
             logstate: false, // 登录状态
-            allsel:true,    //全选状态
+            allsel:false,    //全选状态
             goodsList: [],   // 渲染商品列表
             goods: [
             //     {
@@ -162,9 +162,10 @@ class Shopp extends Component {
     allselect = (e) => {
         console.log(e.target.checked);
         this.props.dispatch({
-            type:"change_selgoods_add",
+            type:"change_selgoods_all",
             selgoods:e.target.checked,  
         })
+        console.log(this.props.goodslist)
         this.setState({
             goods:this.props.goodslist.map(item=>(
                 {
@@ -178,7 +179,6 @@ class Shopp extends Component {
             )),
             allsel:e.target.checked,
         })
-        
     }
     tiaoZ=(id)=>{
         this.props.history.push('/DetailsPage/'+id)
@@ -206,7 +206,7 @@ class Shopp extends Component {
     render() {
         // console.log(this.props)
         // const {goods} = this.state.goodsList
-        
+        console.log('3123123',this.state.goods);
         return (
             <div className='shopp'>
                 <div className="header">
