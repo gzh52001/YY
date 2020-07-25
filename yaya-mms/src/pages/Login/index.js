@@ -30,8 +30,8 @@ const tailLayout = {
         if(result.data.flag ){
           console.log(result.data);
           // 登录成功获取token并保存到localstorage
-          // localStorage.setItem('token',result.token)
-          // localStorage.setItem('user',userName)
+          localStorage.setItem('token',result.data.data.token)
+          localStorage.setItem('user',username)
           message.success('登录成功，将跳转首页',3,()=>{
             
             this.props.history.push('/admin/manage')

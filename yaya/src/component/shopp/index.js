@@ -9,8 +9,7 @@ class Shopp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: true,   // 购物车管理开关状态
-            hasgood: false,  // 购物车内是否有商品
+            status: false,   // 购物车管理开关状态
             logstate: false, // 登录状态
             allsel:true,    //全选状态
             goodsList: [],   // 渲染商品列表
@@ -145,9 +144,6 @@ class Shopp extends Component {
 
 
     }
-    click = (e) => {
-        console.log(e)
-    }
 
     sel = (id,e) => {
         // console.log(id,e.target.checked)
@@ -215,6 +211,7 @@ class Shopp extends Component {
             )),
         })
     }
+
     render() {
         // console.log(this.props)
         // const {goods} = this.state.goodsList
@@ -223,7 +220,7 @@ class Shopp extends Component {
             <div className='shopp'>
                 <div className="header">
                     <div className="title">
-                        <span>购物车(0)</span>
+                        <span>购物车</span>
                     </div>
                     <div className="control">
                         <Link to="#"

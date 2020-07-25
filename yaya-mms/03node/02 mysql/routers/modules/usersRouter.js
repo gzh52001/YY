@@ -179,7 +179,7 @@ router.put('/edit/:uid', async (req, res) => {
 
     try {
         // console.log(9999);
-        let sql = `UPDATE userinf SET ${str} WHERE uid=${id}`;
+        let sql = `UPDATE user SET ${str} WHERE uid=${id}`;
         let p = await query(sql);//[{},{}]
         // console.log(p);
         let inf = {};
@@ -210,11 +210,46 @@ router.put('/edit/:uid', async (req, res) => {
 });
 
 //需求：删除用户 DELETE FROM userinf WHERE uid=24
-router.delete('/del/:uid', async (req, res) => {
-    let id = req.params.uid;//获取uid
+router.delete('/del', async (req, res) => {
+    let id = req.body.id;//获取uid
+    console.log(req.body);
     try {
         // console.log(9999);
-        let sql = `DELETE FROM userinf WHERE uid=${id}`;
+        let sql = `DELETE FROM user WHERE id=${id}`;
+        let p = await query(sql);//[{},{}]
+        // console.log(p);
+        let inf = {};
+        if (p.affectedRows) {
+            //删除成功
+            inf = {
+                code: 2000,
+                flag: true,
+                message: '删除成功'
+            }
+        } else {
+            //删除失败
+            inf = {
+                code: 3000,
+                flag: false,
+                message: '删除失败'
+            }
+        }
+        res.send(inf);
+    } catch (err) {
+        let inf = {
+            code: err.errno,
+            flag: false,
+            message: '查询失败'
+        }
+        res.send(inf);
+    }
+});
+router.delete('/dels', async (req, res) => {
+    let id = req.body.id;//获取uid
+    console.log(req.body);
+    try {
+        // console.log(9999);
+        let sql = `DELETE FROM admin WHERE id=${id}`;
         let p = await query(sql);//[{},{}]
         // console.log(p);
         let inf = {};
@@ -249,7 +284,7 @@ router.delete('/delall/', async (req, res) => {
     let idstr = req.body.ids; // ids 是前端拼接好的uid的字符串，必须要拼接成 21,26,27
     try {
         // console.log(9999);
-        let sql = `DELETE FROM userinf WHERE uid in(${idstr})`;
+        let sql = `DELETE FROM user WHERE uid in(${idstr})`;
         let p = await query(sql);//[{},{}]
         // console.log(p);
         let inf = {};
@@ -266,6 +301,72 @@ router.delete('/delall/', async (req, res) => {
                 code: 3000,
                 flag: false,
                 message: '删除失败'
+            }
+        }
+        res.send(inf);
+    } catch (err) {
+        let inf = {
+            code: err.errno,
+            flag: false,
+            message: '查询失败'
+        }
+        res.send(inf);
+    }
+});
+router.post('/add', async (req, res) => {
+    try {
+        // console.log(9999);
+        let { username, password } = req.body;
+        let sql = `insert into user (username,password) values ('${username}', '${password}')`;
+        let p = await query(sql);//[{},{}]
+        console.log(p);
+        let inf = {};
+        if (p.affectedRows) {
+            //删除成功
+            inf = {
+                code: 2000,
+                flag: true,
+                message: '添加成功'
+            }
+        } else {
+            //删除失败
+            inf = {
+                code: 3000,
+                flag: false,
+                message: '添加失败'
+            }
+        }
+        res.send(inf);
+    } catch (err) {
+        let inf = {
+            code: err.errno,
+            flag: false,
+            message: '查询失败'
+        }
+        res.send(inf);
+    }
+});
+router.post('/adds', async (req, res) => {
+    try {
+        // console.log(9999);
+        let { username, password } = req.body;
+        let sql = `insert into admin (username,password) values ('${username}', '${password}')`;
+        let p = await query(sql);//[{},{}]
+        console.log(p);
+        let inf = {};
+        if (p.affectedRows) {
+            //删除成功
+            inf = {
+                code: 2000,
+                flag: true,
+                message: '添加成功'
+            }
+        } else {
+            //删除失败
+            inf = {
+                code: 3000,
+                flag: false,
+                message: '添加失败'
             }
         }
         res.send(inf);
@@ -296,9 +397,9 @@ router.get('/userlist', async (req, res) => {
     */
 
     try {
-        let sql = `SELECT * FROM userinf LIMIT ${index},${size}`;
+        let sql = `SELECT * FROM user LIMIT ${index},${size}`;
         let p = await query(sql);//[{},{}]
-        let sql2 = `SELECT * FROM userinf`;
+        let sql2 = `SELECT * FROM user`;
         let arr = await query(sql2);//所有的数据 []
         let inf = {};
         if (p.length) {
@@ -332,13 +433,45 @@ router.get('/userlist', async (req, res) => {
 
 //需求：查询uid为xx的用户信息  SELECT * FROM userinf WHERE uid=31
 //  /user/user/
-router.get('/user/:id', async (req, res) => {
-    let id = req.params.id;
+router.get('/user', async (req, res) => {
     try {
-        let sql = `SELECT * FROM userinf WHERE uid=${id}`;
+        let sql = `SELECT * FROM user`;
         let p = await query(sql);//[{},{}]
         let inf = {}
-        if (p.length) {
+        if (p) {
+            //查到数据：查询成功
+            inf = {
+                code: 2000,
+                flag: true,
+                message: '查询成功',
+                data: {
+                    p
+                }
+            }
+        } else {
+            //查不到数据:不能登录
+            inf = {
+                code: 3000,
+                flag: false,
+                message: '查询成功'
+            }
+        }
+        res.send(inf);
+    } catch (err) {
+        let inf = {
+            code: err.errno,
+            flag: false,
+            message: '查询失败'
+        }
+        res.send(inf);
+    }
+});
+router.get('/admin', async (req, res) => {
+    try {
+        let sql = `SELECT * FROM admin`;
+        let p = await query(sql);//[{},{}]
+        let inf = {}
+        if (p) {
             //查到数据：查询成功
             inf = {
                 code: 2000,
