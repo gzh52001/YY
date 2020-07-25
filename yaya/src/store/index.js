@@ -36,8 +36,8 @@ case 'add_to_cart':
 case 'remove_from_cart':
     return{
         //先保存原来的数据
-        ...state,
-                 //新数据 ，原来的购物车数据
+        ...state,          
+        //新数据 ，原来的购物车数据
         goodslist:state.goodslist.filter(item=>item.selgoods!="true")
     }
 //修改商品
