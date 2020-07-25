@@ -93,10 +93,15 @@ class Shopp extends Component {
 
     addNum = (id) => {
         const countGoods=this.props.goodslist.filter(item=>item.goods_id==id)[0]
+        if(countGoods.goods_qty>=10){
+            countGoods.goods_qty=10
+        }else{
+            countGoods.goods_qty=countGoods.goods_qty+1
+        }
         this.props.dispatch({
             type:"change_qty",
             goods_id:id,
-            goods_qty:countGoods.goods_qty+1,  
+            goods_qty:countGoods.goods_qty,  
         })
         this.setState({
             goods:this.props.goodslist.map(item=>(
@@ -113,12 +118,17 @@ class Shopp extends Component {
     }
 
     subNum = (id) => {
-        // console.log('减掉了一件商品')
+        console.log('减掉了一件商品')
         const countGoods=this.props.goodslist.filter(item=>item.goods_id==id)[0]
+        if(countGoods.goods_qty<=1){
+            countGoods.goods_qty=1
+        }else{
+            countGoods.goods_qty=countGoods.goods_qty-1
+        }
         this.props.dispatch({
             type:"change_qty",
             goods_id:id,
-            goods_qty:countGoods.goods_qty-1,  
+            goods_qty:countGoods.goods_qty,  
         })
         this.setState({
             goods:this.props.goodslist.map(item=>(
@@ -146,18 +156,17 @@ class Shopp extends Component {
             goods_id:id,
             selgoods:e.target.checked,  
         })
-        
         this.setState({
-            goods:this.props.goodslist.map(item=>(
-                {
-                   id:item.goods_id,
-                   name:item.goods_name,
-                   img:item.goods_image,
-                   price:item.goods_price,
-                   num:item.goods_qty,
-                   selgoods:item.selgoods, 
-                }
-            )),
+            // goods:this.props.goodslist.map(item=>(
+            //     {
+            //        id:item.goods_id,
+            //        name:item.goods_name,
+            //        img:item.goods_image,
+            //        price:item.goods_price,
+            //        num:item.goods_qty,
+            //        selgoods:item.selgoods, 
+            //     }
+            // )),
             allsel:this.props.goodslist.every(item=>item.selgoods)
         })
  
@@ -168,7 +177,7 @@ class Shopp extends Component {
         this.props.dispatch({
             type:"change_selgoods_add",
             selgoods:e.target.checked,  
-        })
+        })     
         this.setState({
             goods:this.props.goodslist.map(item=>(
                 {
@@ -334,7 +343,7 @@ class Shopp extends Component {
                             </div>
 
                             <span>
-                                共0件商品
+                                共{this.props.totalQty}件商品
                             </span>
 
                             <a href="#/shopp" onClick={this.shanChu}>删除所选</a>
@@ -350,7 +359,7 @@ Shopp = withRouter(Shopp)
 Shopp=connect(({goodslist})=>({
     goodslist,
         // 计算总价格 prev:返回值   prev+item.goods_price*item.goods_qty :之前加上当前价格                  初始值为0
-    totalPrice:goodslist.reduce((prev,item,idx,arr)=>prev+item.goods_price*item.goods_qty,0)
-
+    totalPrice:goodslist.reduce((prev,item,idx,arr)=>prev+item.goods_price*item.goods_qty,0),
+    totalQty:goodslist.reduce((prev,item,idx,arr)=>prev+item.goods_qty,0),
 }))(Shopp)
 export default Shopp
