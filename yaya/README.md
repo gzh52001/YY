@@ -1,68 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+项目名称：丫丫网,丫丫网后台管理系统
 
-## Available Scripts
+演示：官网：https://www.yaya.cn/
+      上线地址：http://39.108.223.176:3001/
+git仓库地址：https://github.com/gzh52001/YY
 
-In the project directory, you can run:
+团队与分工：
+     组长：姚捷，组员：林梓桐，黄奕强，马广伟
 
-### `npm start`
+负责模块：
+     姚捷：负责个人中心(我的页面),登录模块，注册模块，消息页面，整个后台管理系统
+     林梓桐：负责首页，分类页，详情页，列表页，搜索功能
+     黄奕强：购物车页面，购物车模块
+     马广伟：本应该负责首页，但是一直不动工
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  项目截图：
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![ef31aebe135c50adf7aa716fc2644d7](C:\Users\姚\AppData\Local\Temp\WeChat Files\ef31aebe135c50adf7aa716fc2644d7.png)
 
-### `npm test`
+![efadf6c26feba668060e68485bd6d8c](C:\Users\姚\AppData\Local\Temp\WeChat Files\efadf6c26feba668060e68485bd6d8c.png)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![31c812a88352a7310ec1ee0bc9cffd0](C:\Users\姚\AppData\Local\Temp\WeChat Files\31c812a88352a7310ec1ee0bc9cffd0.png)
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
