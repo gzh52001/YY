@@ -245,10 +245,11 @@
             width: vw(153);
             height: vh(290);
             // height: 85%;
-            background-size: cover;
+            // background-size: cover;
     text-align: center;
-    background-size: 100%;
+    // background-size: 100%;
     background-repeat: no-repeat;
+    -webkit-background-size: 100% 100%;
            .recommend-count-7-2-img{
                margin-top:40px ;
                width: vw(153); 
