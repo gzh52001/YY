@@ -43,10 +43,14 @@
         img{
             float: left;
             width: vw(80);
-            height: vh(60);
-            margin-right: 10px;
+            height:100%;
+            margin-right: vw(10);
         }
-        p{
+        .TopNews-count-2-div{
+            float: left;
+            width: vw(265);
+            height: 100%;
+              p{
             float: left;
             width: vw(265);
             height: vh(36);
@@ -59,6 +63,17 @@
             float: left;
             font-size: 10px;
             margin-top: 5px;
+        }
+        }
+      
+    }
+    .afterService-count-6{
+        width: 100%;
+        height: vh(46);
+        background: #f5f5f5;
+        text-align: center;
+        span{
+            line-height: vh(46);
         }
     }
 }

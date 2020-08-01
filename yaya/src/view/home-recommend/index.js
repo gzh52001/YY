@@ -20,10 +20,12 @@ class Recommend extends Component{
         }
 
     }
+
     xqy=(id)=>{
         this.props.history.push('/DetailsPage/'+id)
         // console.log(id);
     }
+    
     render(){
         const {list}=this.state
         return(
@@ -131,8 +133,15 @@ class Recommend extends Component{
                        <span>￥123456</span>
                    </li> */}
                </ul>
+
+               <div className="afterService-count-6"><span>没有了</span></div>
           </div>
+
+          
         )
+        
+        
     }
+    
 }
 export default Recommend

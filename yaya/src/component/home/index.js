@@ -16,6 +16,7 @@ class Home extends Component{
         list:[]
     }
    async componentWillMount(){
+       
     //    console.log("111",this.props.history.location.pathname);
        let id=this.props.match.params.id
     //    console.log('123',id);
@@ -34,6 +35,18 @@ class Home extends Component{
            console.log(err);
        }
     }
+
+    componentDidMount() {
+        if (this.scroll) {
+         this.scroll.addEventListener("scroll", e => {
+           const { clientHeight, scrollHeight, scrollTop } = e.target;
+           // const { clientHeight, scrollHeight, scrollTop } = this.scroll;
+    
+           const isBottom = scrollTop + clientHeight + 20 > scrollHeight;
+           console.log(scrollTop, clientHeight, scrollHeight, isBottom);
+         });
+       }
+     }
     handleClick = e => {
         // console.log('click ', e);
         this.setState({ current: e.key });

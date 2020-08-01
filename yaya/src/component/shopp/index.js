@@ -300,7 +300,7 @@ class Shopp extends Component {
                         <ul>
                             {
                                 this.state.goodsList.map(item => <li key={item.productId}>
-                                    <div className="items" onClick={this.tiaoZ.bind(this,item.productId)}>
+                                    <div className="items" onClick={this.tiaoZ.bind(this,item.sku[0].ppid)}>
                                         <Link to="#">
                                             <img src={item.sku[0].imagePath} />
                                         </Link>

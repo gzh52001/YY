@@ -98,11 +98,12 @@ class FuzzyQuery extends React.Component {
                     <ul>
                     {list.map((item, index) => {
                         return (
-                            <li key={index} onClick={()=>{
+                            <li  key={index} onClick={()=>{
                                 clearInterval(this.state.timer)
                               this.huancun(item.name)
                                 this.props.history.push('/search-list/'+item.productId+'&'+item.name)
-                            }}><i><SearchOutlined /></i><span>{item.name}</span><i className='FuzzyQuery-count-2-i'><RightOutlined /></i></li>
+                                
+                            }}><i className='FuzzyQuery-count-2-lili'><SearchOutlined /></i><span className='FuzzyQuery-count-2-span'><i>{item.name}</i></span><i className='FuzzyQuery-count-2-i'></i></li>
                         )
                     })}
                     </ul>

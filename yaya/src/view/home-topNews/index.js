@@ -49,8 +49,10 @@ class TopNews extends Component{
                      return   (
                      <div  className='TopNews-count-2' key={item.id}> 
                         <img src={item.imagePath}/>
+                        <div className='TopNews-count-2-div'>
                      <p>{item.title}</p>
                      <div><span>小丫</span><span style={{float:"right"}}>{item.pageView}阅读</span></div>
+                     </div>
                         </div>
                         ) 
                      }else{
@@ -73,7 +75,9 @@ class TopNews extends Component{
               <p>魅族17系列正式发布，性能强拍照美！3699元起售</p>
               <div><span>小丫</span><span style={{float:"right"}}>36阅读</span></div>
               </div>  */}
+               <div className="afterService-count-6"><span>没有了</span></div>
           </div>
+          
         )
     }
 }

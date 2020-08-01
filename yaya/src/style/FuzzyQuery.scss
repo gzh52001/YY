@@ -52,11 +52,29 @@ z-index: 999;
             // background: red;
             border-bottom: 1px solid #f1efef;
             border-top: 1px solid #f1efef;
-            span{
+            .FuzzyQuery-count-2-lili{
+                float: left;
                 line-height: vh(44);
+            }
+            .FuzzyQuery-count-2-span{
+                display: block;
+                line-height: vh(44);
+                width: vw(300);
+                // background: red;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+                span{
+                    
+                }
             }
             .FuzzyQuery-count-2-i{
                 float: right;
+                line-height: vh(44);
+                svg{
+                    position: absolute;
+                    right: 0;
+                }
             }
         } 
         }
